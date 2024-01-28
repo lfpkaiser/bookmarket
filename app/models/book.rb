@@ -8,5 +8,4 @@ class Book < ApplicationRecord
   validates :year, presence: true, numericality: { only_integer: true }
   validates :price, presence: true, numericality: { only_integer: true }
   validates :quantity, presence: true, numericality: { only_integer: true }
-
 end
