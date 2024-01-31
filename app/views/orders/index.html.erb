@@ -1,0 +1,6 @@
+<h2>All Orders</h2>
+<ul>
+  <% @orders.each do |order| %>
+    <li><%= render 'order_details', order: order %></li>
+  <% end %>
+</ul>
