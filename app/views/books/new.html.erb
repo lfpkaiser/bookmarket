@@ -2,13 +2,33 @@
 
 <%= form_with(model: @book, url: books_path) do |form| %>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
     <%= form.label :author %>
     <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.text_field :genre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
   </div>
 
   <div class="actions">
