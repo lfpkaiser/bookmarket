@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_user, :set_book, only: [:new, :create]
+  before_action :set_user, :set_book, only: %i[new create]
 
   def index
     @orders = Order.all
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to @order, notice: "Ordem criada com sucesso."
     else
-     render :new, notice: "Falha ao criar pedido, tente novamente."
+      render :new, notice: "Falha ao criar pedido, tente novamente."
     end
   end
 
