@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_user, :set_book, only: %i[new create]
+  before_action :set_user
+  before_action :set_book, only: [:new, :create]
 
   def index
     @orders = Order.all
@@ -10,7 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = @book.orders.build
+    @order = Order.new
+    @order.book = @book
   end
 
   def create
@@ -33,16 +35,16 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_book
-    @book = Book.find(params[:book_id])
-  end
+    def set_book
+      @book = Book.find(params[:id])
+    end
 
-  def order_params
-    params.require(:order).permit(:quantity, :total_price)
-  end
+    def order_params
+      params.require(:order).permit(:quantity, :total_price)
+    end
 
-  def set_user
-    @user = current_user
-  end
+    def set_user
+      @user = current_user
+    end
 
 end
