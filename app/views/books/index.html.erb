@@ -16,8 +16,8 @@
         <td><%= book.author %></td>
         <td><%= book.genre %></td>
         <td>
-          <% if book.photos.attached? %>
-            <%= cl_image_tag book.photos.first.key, class: "book-photo" %>
+          <% if book.photo.attached? %>
+            <%= cl_image_tag book.photo.key, class: "book-photo" %>
           <% else %>
             No photo available
           <% end %>
