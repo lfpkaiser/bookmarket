@@ -11,7 +11,7 @@
           <% else %>
             No photo available
           <% end %>
-          <a href="<%= orders_path %>" class="btn btn-primary">Add to cart</a>
+          <%= button_to "Add to cart", orders_path, method: :post, class: "btn btn-primary"%>
         </div>
       </div>
     </div>
