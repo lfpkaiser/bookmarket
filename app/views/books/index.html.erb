@@ -1,4 +1,4 @@
-<h1>Your Bookmarket</h1>
+<h1>All our books:</h1>
 
 <div class="card-deck">
   <% @books.each do |book| %>
@@ -19,5 +19,3 @@
 </div>
 
 <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-primary" %>
-
-
