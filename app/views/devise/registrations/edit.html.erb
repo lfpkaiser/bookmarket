@@ -28,6 +28,14 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :photo,
+                as: :file %>
+    <% if resource.photo.attached? %>
+      <div>
+        <p>Current photo: <%= resource.photo.filename %></p>
+        <%= f.input :remove_photo, as: :boolean %>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-actions">
