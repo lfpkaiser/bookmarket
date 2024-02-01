@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :orders
 
-  has_many_attached :photos
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :author, presence: true

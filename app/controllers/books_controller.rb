@@ -17,15 +17,21 @@ class BooksController < ApplicationController
     @book.user = current_user
 
     if @book.save
-      redirect_to book_path(@book)
+      redirect_to books_path(@book)
     else
       render :new
     end
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:name, :author, :genre, :year, :price, :quantity)
+    params.require(:book).permit(:name, :author, :genre, :year, :price, :quantity, :photo)
   end
 end
