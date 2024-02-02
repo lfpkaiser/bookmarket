@@ -16,10 +16,12 @@ class OrdersController < ApplicationController
 
   def create #criar pedido
     # checar se a quantidade está disponível para venda.
-    @order = Order.create!(book_id: params[:book_id], user_id: current_user.id, quantity: params[:quantity])
-    # @order = @book.orders.build(order_params)
-    if @order.save
+    @order = current_user.orders.build(book_id: params[:book_id], quantity: params[:quantity])
+
+    if
+      @order.save!
       redirect_to books_path, notice: "Ordem criada com sucesso."
+
     else
       render :new, notice: "Falha ao criar pedido, tente novamente."
     end
@@ -48,5 +50,4 @@ class OrdersController < ApplicationController
   def set_user
     @user = current_user
   end
-
 end
