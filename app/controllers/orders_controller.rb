@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :set_user, :set_book, only: %i[new create]
+  # before_action :set_user
+  before_action :set_book, only: [:new]
 
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   def show
@@ -10,13 +11,17 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = @book.orders.build
+    @order = Order.new
   end
 
-  def create
-    @order = @book.orders.build(order_params)
-    if @order.save
-      redirect_to @order, notice: "Ordem criada com sucesso."
+  def create #criar pedido
+    # checar se a quantidade está disponível para venda.
+    @order = current_user.orders.build(book_id: params[:book_id], quantity: params[:quantity])
+
+    if
+      @order.save!
+      redirect_to books_path, notice: "Ordem criada com sucesso."
+
     else
       render :new, notice: "Falha ao criar pedido, tente novamente."
     end
@@ -29,20 +34,20 @@ class OrdersController < ApplicationController
     else
       render :edit, notice: "Falha ao atualizar pedido, tente novamente."
     end
+    #apos o final redirecionar para outra página para outra página -> *status da ordem*
   end
 
   private
 
   def set_book
-    @book = Book.find(params[:book_id])
+    @book = Book.find_by(params[:book_id])
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :total_price)
+    params.require(:order).permit(:book_id, :quantity, :user_id)
   end
 
   def set_user
     @user = current_user
   end
-
 end

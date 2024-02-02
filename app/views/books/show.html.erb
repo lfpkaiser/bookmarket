@@ -6,12 +6,24 @@
           <h1><%= @book.name %></h1>
           <p><%= @book.author %></p>
           <p><%= @book.price %></p>
+          <p>Available: <%= @book.quantity %></p>
           <% if @book.photo.attached? %>
             <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             No photo available
           <% end %>
-          <a href="<%= orders_path %>" class="btn btn-primary">Add to cart</a>
+          <%= form_tag orders_path, method: :post do %>
+              <%= hidden_field_tag :book_id, @book.id %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+
+              <div class="form-group">
+                <%= label_tag :quantity, "Quantity:" %>
+                <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
+              </div>
+
+              <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, quantity: 1.to_i, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+            <% end %>
+            <%#
         </div>
       </div>
     </div>
