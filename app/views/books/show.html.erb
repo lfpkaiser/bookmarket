@@ -11,9 +11,13 @@
           <% else %>
             No photo available
           <% end %>
-          <%= button_to "Add to cart", orders_path, method: :post, class: "btn btn-primary"%>
+            <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, quantity: 1.to_i, user_id: current_user.id }, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<%# criar form onde book_id e user_id fiquem invisiveis para usuário: "d-none"
+add quantity - máximo = quantidade disponível para venda
+botão de submit - "purchase" -> confirmação %>
