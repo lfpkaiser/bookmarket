@@ -4,7 +4,7 @@ class Book < ApplicationRecord
             'Self-help', 'Cooking']
 
   belongs_to :user
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   has_one_attached :photo
 
