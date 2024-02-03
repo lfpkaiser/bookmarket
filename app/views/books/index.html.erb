@@ -1,10 +1,11 @@
+  
 <h1>All our books:</h1>
 
 <div class="card-deck">
   <% @books.each do |book| %>
     <div class="card">
       <% if book.photo.attached? %>
-        <%= link_to cl_image_tag(book.photo.key, class: "card-img-top", height: 300, width: 400, crop: :fill), book_path(book) %>
+        <%= link_to cl_image_tag(book.photo.key, class: "card-img-top", height: 300, width: 800, crop: :fill), book_path(book) %>
       <% else %>
         <div class="card-img-top">No photo available</div>
       <% end %>
