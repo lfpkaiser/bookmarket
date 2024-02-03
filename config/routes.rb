@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   resources :orders
 
-
+  # get "search" => "books#search", as: :search
+  get "my_books" => "books#my_books", as: :my_books
 end

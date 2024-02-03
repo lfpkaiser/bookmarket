@@ -43,7 +43,15 @@ class BooksController < ApplicationController
     else
       redirect_to books_path, alert: 'Insufficient quantity.'
     end
-  end 
+  end
+
+  def search
+    @books = Book.where('name LIKE ?', "%#{params[:search]}%")
+  end
+
+  def my_books
+    @books = current_user.books
+  end
 
   private
 
