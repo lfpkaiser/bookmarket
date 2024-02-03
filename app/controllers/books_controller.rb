@@ -29,22 +29,6 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def buy
-    @book = Book.find(params[:id])
-    @order = Order.new(order_params)
-    @order.book = @book
-    @order.user = current_user
-
-    if @order.quantity <= @book.quantity
-      @order.save
-      @book.quantity -= @order.quantity
-      @book.save
-      redirect_to books_path, notice: 'Order placed successfully.'
-    else
-      redirect_to books_path, alert: 'Insufficient quantity.'
-    end
-  end
-
   def search
     @books = Book.where('name LIKE ?', "%#{params[:search]}%")
   end

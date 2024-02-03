@@ -20,13 +20,17 @@ class OrdersController < ApplicationController
     quantity = params[:quantity].to_i # Certifique-se de converter para inteiro
 
     @order = current_user.orders.build(book_id: book_id, quantity: quantity)
+    @book = Book.find(book_id)
 
     if @order.save
-      redirect_to books_path, notice: "Ordem criada com sucesso."
+      @book.quantity -= @order.quantity
+      @book.save
+      redirect_to orders_path, notice: "Ordem criada com sucesso."
     else
       render :new, notice: "Falha ao criar pedido, tente novamente."
     end
   end
+
 
   def update
     @order = Order.find(params[:id])
