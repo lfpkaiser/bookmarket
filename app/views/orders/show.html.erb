@@ -12,13 +12,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
       <tr>
-        <td><%= order.book.name %></td>
-        <td><%= order.quantity %></td>
-        <td><%= order.book.price %></td>
+        <td><%= @order.book.name %></td>
+        <td><%= @order.book.quantity %></td>
+        <td><%= @order.book.price %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 <%= link_to 'Back to Orders', orders_path %>
