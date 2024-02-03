@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     @book.user = current_user
 
     if @book.save
-      redirect_to books_path(@book)
+      redirect_to my_books_path(@book)
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
+    redirect_to my_books_path
   end
 
   def search
@@ -35,6 +35,19 @@ class BooksController < ApplicationController
 
   def my_books
     @books = current_user.books
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to my_books_path(@book)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
