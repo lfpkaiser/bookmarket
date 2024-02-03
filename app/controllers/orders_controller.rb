@@ -42,6 +42,12 @@ class OrdersController < ApplicationController
     # apos o final redirecionar para outra página para outra página -> *status da ordem*
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path, notice: "Ordem deletada com sucesso."
+  end
+
   private
 
   def set_book
