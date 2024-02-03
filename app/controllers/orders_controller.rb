@@ -44,6 +44,14 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+    @book = Book.find(@order.book_id)
+
+    # Store the original quantity of the book
+    original_quantity = @book.quantity
+
+    # Revert the quantity of the book back to its original state
+    @book.update(quantity: original_quantity + @order.quantity)
+
     @order.destroy
     redirect_to orders_path, notice: "Ordem deletada com sucesso."
   end
