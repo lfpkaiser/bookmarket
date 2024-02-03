@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     else
       render :edit, notice: "Falha ao atualizar pedido, tente novamente."
     end
-    #apos o final redirecionar para outra página para outra página -> *status da ordem*
+    # apos o final redirecionar para outra página para outra página -> *status da ordem*
   end
 
   private
