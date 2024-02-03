@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path(@book)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

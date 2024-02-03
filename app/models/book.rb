@@ -10,8 +10,8 @@ class Book < ApplicationRecord
 
   validates :name, presence: true
   validates :author, presence: true
-  validates :genre, presence: true, inclusion: { in: GENRES }
-  validates :year, presence: true, numericality: { only_integer: true }
-  validates :price, presence: true, numericality: { only_integer: true }
-  validates :quantity, presence: true, numericality: { only_integer: true }
+  validates :genre, presence: true, inclusion: { in: GENRES, message: "is not a valid genre" }
+  validates :year, presence: true, numericality: { only_integer: true, message: "must be an integer" }
+  validates :price, presence: true, numericality: { only_integer: true, message: "must be an integer" }
+  validates :quantity, presence: true, numericality: { only_integer: true, message: "must be an integer" }
 end
