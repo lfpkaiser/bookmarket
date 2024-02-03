@@ -21,9 +21,8 @@
                 <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
               </div>
 
-              <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, quantity: 1.to_i, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+               <%= submit_tag "Purchase!", class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
             <% end %>
-            <%#
         </div>
       </div>
     </div>

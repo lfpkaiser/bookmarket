@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :books do
-    resources :orders, only: [:new, :create, :index]
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
   resources :orders
+
 
 end

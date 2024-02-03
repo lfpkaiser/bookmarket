@@ -1,2 +1,22 @@
-<h2>Order Details</h2>
-<%= render 'order_index', order: @order %>
+<h1>Order Details</h1>
+
+<p><strong>Order ID:</strong> <%= @order.id %></p>
+<p><strong>Order Date:</strong> <%= @order.created_at.strftime("%Y-%m-%d") %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @order.book.name %></td>
+        <td><%= @order.book.quantity %></td>
+        <td><%= @order.book.price %></td>
+      </tr>
+  </tbody>
+</table>
+<%= link_to 'Back to Orders', orders_path %>

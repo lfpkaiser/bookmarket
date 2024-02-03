@@ -14,14 +14,15 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create #criar pedido
+  def create
     # checar se a quantidade está disponível para venda.
-    @order = current_user.orders.build(book_id: params[:book_id], quantity: params[:quantity])
+    book_id = params[:book_id]
+    quantity = params[:quantity].to_i # Certifique-se de converter para inteiro
 
-    if
-      @order.save!
+    @order = current_user.orders.build(book_id: book_id, quantity: quantity)
+
+    if @order.save
       redirect_to books_path, notice: "Ordem criada com sucesso."
-
     else
       render :new, notice: "Falha ao criar pedido, tente novamente."
     end
