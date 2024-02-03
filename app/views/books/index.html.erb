@@ -1,26 +1,30 @@
+<div class="container">
+  <h1 class="text-center">All our books:</h1>
 
-<h1>All our books:</h1>
-
-<div class="card-deck">
-  <% @books.each do |book| %>
-    <div class="card">
-      <% if book.photo.attached? %>
-        <%= link_to cl_image_tag(book.photo.key, class: "card-img-top", height: 300, width: 800, crop: :fill), book_path(book) %>
-      <% else %>
-        <div class="card-img-top">No photo available</div>
-      <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= book.name %></h5>
-        <p class="card-text">Author: <%= book.author %></p>
-        <p class="card-text">Genre: <%= book.genre %></p>
-        <%# <%= button_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this book?" }, class: "btn btn-dark" %>
-        <%= link_to "View more details", book_path(book), class: "btn btn-primary" %>
+  <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if book.photo.attached? %>
+            <%= link_to cl_image_tag(book.photo.key, class: "card-img-top", height: 300, width: 800, crop: :fill), book_path(book) %>
+          <% else %>
+            <div class="card-img-top">No photo available</div>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= book.name %></h5>
+            <p class="card-text">Author: <%= book.author %></p>
+            <p class="card-text">Genre: <%= book.genre %></p>
+            <%# <%= button_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this book?" }, class: "btn btn-dark" %>
+            <%= link_to "View more details", book_path(book), class: "btn btn-primary" %>
+          </div>
+        </div>
       </div>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="text-center mt-4">
+      <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
-
-<% if user_signed_in? %>
-<%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-primary" %>
-<% end %>
-
