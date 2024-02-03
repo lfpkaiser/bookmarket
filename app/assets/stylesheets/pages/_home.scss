@@ -1,4 +1,5 @@
 // Specific CSS for your home-page
+
 $gray-darker: #444444;
 $gray-dark: #696969;
 $gray: #999999;
@@ -121,4 +122,17 @@ img {
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
-}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  
+
+  h1 {
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 32px;
+    font-weight: bold;
+  }
