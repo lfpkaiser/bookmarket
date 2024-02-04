@@ -31,6 +31,14 @@ class OrdersController < ApplicationController
     end
   end
 
+  def status
+    @order = Order.find(params[:id])
+    if @order.status
+      puts "Confirmed!"
+    else
+      puts "Waiting"
+    end
+  end
 
   def update
     @order = Order.find(params[:id])
