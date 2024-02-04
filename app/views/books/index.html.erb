@@ -1,4 +1,4 @@
-<div class="container">
+<div class="styles__SearchWrapper-sc-18kpqdv-2 floVJi">
   <div class="banner mb-4 d-flex text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('livraria-lello.jpg') %>)">
     <div class="container">
       <h1 >Welcome to the <strong>BookMarket!</strong></h1>
@@ -20,13 +20,13 @@
           <div class="card__title"><%= book.name %></div>
           <p class="card__text">Author: <%= book.author %></p>
           <p class="card__text">Genre: <%= book.genre %></p>
-          <%= link_to "View more details", book_path(book), class: "btn btn--block card__btn" %>
+          <%= link_to "View more details", book_path(book), class: "btn btn-dark card__btn" %>
         </div>
       </div>
     </li>
   <% end %>
 </ul>
 <% if user_signed_in? %>
-<%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-primary" %>
+<%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark " %>
 <% end %>
 </div>

@@ -7,6 +7,7 @@
           <p><%= @book.author %></p>
           <p><%= @book.price %></p>
           <p>Available: <%= @book.quantity %></p>
+          <p>This book was ordered <%= pluralize(@book.orders.count, 'time')%>!</p>
           <% if @book.photo.attached? %>
             <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
@@ -28,6 +29,11 @@
                 <% end %>
               <% end %>
         </div>
+        <% if @book.quantity.zero? %>
+          <div class="alert alert-danger" role="alert">
+            Sorry, this book is currently out of stock.
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
