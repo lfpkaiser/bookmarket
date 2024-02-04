@@ -1,9 +1,8 @@
 <h1>All Orders</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Order ID</th>
       <th>Book Name</th>
       <th>Quantity</th>
       <th>Order Date</th>
@@ -12,12 +11,16 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.book.name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-        <td><%= button_to "Delete Order", order, method: :delete, data: { turbo_method: :delete, confirm: "Are you sure you want to delete this order?" }%></td>
+        <td><%= link_to "Order Details", order_path(order), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
+      </tbody>
+    </table>
+
+     <%= link_to "back to books", books_path, class: "btn btn-primary" %>
+
   </tbody>
 </table>

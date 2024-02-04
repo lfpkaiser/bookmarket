@@ -1,22 +1,44 @@
-<h1>Order Details</h1>
+<div class="order-details-container">
+  <div class="order-info">
+    <h1 class="order-title">Order Details</h1>
+    <div class="detail-item">
+      <strong>Order ID:</strong> <%= @order.id %>
+    </div>
+    <div class="detail-item">
+      <strong>Order Date:</strong> <%= @order.created_at.strftime("%Y-%m-%d") %>
+    </div>
+    <div class="detail-item">
+      <strong>Order Status:</strong> <%= @order.status %>
+    </div>
+  </div>
 
-<p><strong>Order ID:</strong> <%= @order.id %></p>
-<p><strong>Order Date:</strong> <%= @order.created_at.strftime("%Y-%m-%d") %></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Book Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Book Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= @order.book.name %></td>
         <td><%= @order.quantity %></td>
-        <td><%= @order.book.price %></td>
+        <td><%= number_to_currency(@order.book.price, unit: "R$") %></td>
       </tr>
-  </tbody>
-</table>
-<%= link_to 'Back to Orders', orders_path %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"></td>
+        <td class="total"><strong>Total:</strong> <%= number_to_currency(@order.quantity * @order.book.price, unit: "R$") %></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="buttons-container" style="display: flex; justify-content: space-between;">
+    <%= link_to 'Back to Orders', orders_path, class: "btn btn-secondary" %>
+    <div>
+      <%= button_to "Delete Order", order_path(@order), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure you want to delete this order?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
