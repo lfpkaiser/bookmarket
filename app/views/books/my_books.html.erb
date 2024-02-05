@@ -1,0 +1,31 @@
+ <div class="card-product text-center">
+  <h1> My shelf </h1>
+    <% if @books.empty? %>
+    <p> You have no books in your shelf. </p>
+</div>
+
+<% else %>
+  <div class="card-product text-center">
+    <% @books.each do |book| %>
+        <% if book.photo.attached? %>
+          <%= link_to cl_image_tag(book.photo.key, class: "card-img-top", height: 300, width: 800, crop: :fill), book_path(book) %>
+        <% else %>
+          <div class="card-img-top">No photo available</div>
+        <% end %>
+        <div class="card-procuct-infos">
+          <h5 class="card-title">
+          <%= book.name %></h5>
+          <p class="card-text">Author: <%= book.author %></p>
+          <p class="card-text">Genre: <%= book.genre %></p>
+
+          <%= link_to "View more details", book_path(book), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_book_path(book), class: "btn btn-primary" %>
+          <%= button_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this book?" }, class: "btn btn-dark" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% if user_signed_in? %>
+  <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark" %>
+<% end %>

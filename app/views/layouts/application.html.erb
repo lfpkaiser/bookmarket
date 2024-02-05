@@ -19,6 +19,51 @@
       <%= yield %>
       </div>
       <%= render "shared/flashes" %>
+
+      <div class="card">
+       <div class="card-header text-center">
+         <div class="footer-copyright">
+          <i class="fa-solid fa-bookmark"></i>
+         </div>
+       </div>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <footer>
+          <div class="container inner">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <div class="logo">
+                  <h1>THE BOOKMARKET</h1>
+                </div>
+              </div>
+              <div class="col-md-6 text-center">
+                <P>
+                  <% famous_quotes = [
+                    "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. - Jane Austen",
+                    "It was the best of times, it was the worst of times. - Charles Dickens",
+                    "I have always imagined that Paradise will be a kind of library. - Jorge Luis Borges",
+                    "A room without books is like a body without a soul. - Marcus Tullius Cicero",
+                    "There is no friend as loyal as a book. - Ernest Hemingway",
+                    "Books are a uniquely portable magic. - Stephen King",
+                    "You can never get a cup of tea large enough or a book long enough to suit me. - C.S. Lewis",
+                    "I find television very educating. Every time somebody turns on the set, I go into the other room and read a book. - Groucho Marx",
+        ] %>
+                  <%= famous_quotes.sample %>
+                </P>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center social">
+                  <ul>
+                   <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
     </div>
     </body>
 </html>

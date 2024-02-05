@@ -1,11 +1,15 @@
 <div class="styles__SearchWrapper-sc-18kpqdv-2 floVJi">
-  <div class="banner mb-4 d-flex text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('livraria-lello.jpg') %>)">
+  <div class="banner mb-4 d-flex text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('library-book-bookshelf-read.jpg') %>)">
     <div class="container">
       <h1 >Welcome to the <strong>BookMarket!</strong></h1>
     </div>
 </div>
 <div class="container text-center" >
-  <h2>Browse all our books!</h2>
+  <div class="container-card d-flex justify-content-center align-items-center">
+    <% if user_signed_in? %>
+      <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark rounded-corner transparent-bg full-width" %>
+    <% end %>
+  </div>
 </div>
 <ul class="cards">
   <% @books.each do |book| %>
@@ -26,7 +30,4 @@
     </li>
   <% end %>
 </ul>
-<% if user_signed_in? %>
-<%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark " %>
-<% end %>
 </div>
