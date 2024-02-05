@@ -14,9 +14,11 @@
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
     </div>
-    <div>
-    <%= yield %>
+    <div class="order-details-container" style="padding: 30px;">
+      <div style="padding: 30px;">
+      <%= yield %>
+      </div>
+      <%= render "shared/flashes" %>
     </div>
-    <%= render "shared/flashes" %>
-  </body>
+    </body>
 </html>
