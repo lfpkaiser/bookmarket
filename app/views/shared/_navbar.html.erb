@@ -8,7 +8,7 @@
       <div class="input-group">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-dark" type="submit">Search</button>
         </div>
       </div>
     </form>
@@ -24,7 +24,7 @@
             <%= link_to "Home", root_path, class: "nav-link btn btn-outline-success" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sell Books", new_book_path, class: "nav-link btn btn-outline-success" %>
+            <%= link_to "Sell Books", new_book_path, class: "nav-link btn navbar-nav" %>
           </li>
           <li class="nav-item">
             <%= link_to "My books", my_books_path, class: "nav-link btn btn-outline-success" %>
@@ -53,11 +53,11 @@
           </li>
         <% else %>
          <li class="nav-item">
-            <%= link_to "Log in", new_user_session_path, class: "nav-link btn btn-outline-success" %>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link btn btn-outline-dark" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "nav-link btn btn-outline-success" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link btn btn-outline-dark" %>
           </li>
 
         <% end %>
