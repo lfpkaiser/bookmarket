@@ -36,7 +36,7 @@
   </table>
 
   <div class="buttons-container" style="display: flex; justify-content: space-between;">
-    <%= link_to 'Back to Orders', orders_path, class: "btn btn-secondary" %>
+    <%= link_to 'Back to Orders', orders_path, class: "btn btn-dark" %>
     <div>
       <%= button_to "Delete Order", order_path(@order), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure you want to delete this order?" }, class: "btn btn-danger" %>
     </div>
