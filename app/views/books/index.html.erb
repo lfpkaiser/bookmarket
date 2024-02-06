@@ -12,13 +12,13 @@
   </div>
 </div>
 <ul class="cards">
-  <% @books.each do |book| %>
+  <% @books.order(id: :asc).each do |book| %>
     <li class="cards__item">
       <div class="card">
         <% if book.photo.attached? %>
           <%= link_to cl_image_tag(book.photo.key, class: "card__image card__image--fence", style: "width: 100%; height: 100%; object-fit: contain"), book_path(book) %>
         <% else %>
-          <div class="card__image card__image--fence">No photo available</div>
+          <%= link_to image_tag("Image_not_available.png", class: "card__image card__image--fence"), book_path(book) %>
         <% end %>
         <div class="card__content">
           <div class="card__title"><%= book.name %></div>
