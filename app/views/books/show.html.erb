@@ -1,34 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mx-auto">
       <div class="card card-category">
-        <div class="card-body">
-          <h1><%= @book.name %></h1>
-          <p><%= @book.author %></p>
-          <p><%= @book.price %></p>
-          <p>Available: <%= @book.quantity %></p>
-          <p>This book was ordered <%= pluralize(@book.orders.count, 'time')%>!</p>
+        <div class="card-body text-center"> <!-- Add text-center class here -->
+            <h1><strong><%= @book.name %></strong></h1>
+          <h3><%= @book.author %></h3>
+          <p>You can buy it for <%= @book.price %>$</p>
           <% if @book.photo.attached? %>
             <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             No photo available
           <% end %>
           <%= form_tag orders_path, method: :post do %>
-              <%= hidden_field_tag :book_id, @book.id %>
+            <%= hidden_field_tag :book_id, @book.id %>
+            <% if current_user %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+            <% end %>
+            <p>This book was ordered <%= pluralize(@book.orders.count, 'time')%>! <i class="fa-solid fa-truck-fast"></i> Available: <%= @book.quantity %></p>
               <% if current_user %>
-                <%= hidden_field_tag :user_id, current_user.id %>
-              <% end %>
-              <div class="form-group">
-                <%= label_tag :quantity, "Quantity:" %>
-                <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
-              </div>
-                <% if current_user %>
-                  <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+                <% if @book.quantity.zero? %>
+                  <%= render 'shared/out_of_stock' %>
                 <% else %>
-                  <%= link_to "Login to purchase", new_user_session_path(return_to: book_path(@book)), class: "btn btn-primary" %>
+                <div class="form-group">
+                   <%= label_tag :quantity, "Quantity:" %>
+                   <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
+                </div>
+                <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
                 <% end %>
+              <% else %>
+                <%= link_to "Login to purchase", new_user_session_path(return_to: book_path(@book)), class: "btn btn-primary" %>
               <% end %>
+          <% end %>
         </div>
+
         <% if @book.quantity.zero? %>
           <div class="alert alert-danger" role="alert">
             Sorry, this book is currently out of stock.

@@ -1,6 +1,12 @@
-<h1>All Orders</h1>
+<div class="card-product text-center">
+    <h1> All my orders </h1>
+</div>
 
-<table class="table table-striped">
+<div style="display: flex; align-items: center; justify-content: center; m-5">
+  <i class="fa-solid fa-truck" style="font-size: 2em;"></i>
+</div>
+
+<table class="table table-striped mt-10" style="margin-top: 40px;">
   <thead>
     <tr>
       <th>Book Name</th>
@@ -18,10 +24,9 @@
         <td><%= link_to "Order Details", order_path(order), class: "btn btn-dark" %></td>
       </tr>
     <% end %>
-      </tbody>
-    </table>
-
-     <%= link_to "back to books", books_path, class: "btn btn-dark" %>
-
   </tbody>
 </table>
+
+<div style="display: flex; justify-content: center;">
+  <%= link_to "back to books", books_path, class: "btn btn-dark" %>
+</div>
