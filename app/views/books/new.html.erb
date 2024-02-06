@@ -1,8 +1,15 @@
 <div class="container py-1">
+  <div class="card-product text-center">
+    <h1> Sell your book </h1>
+  </div>
+
+<div style="display: flex; align-items: center; justify-content: center; m-5">
+  <i class="fa-solid fa-coins" style="font-size: 2em;"></i>
+</div>
+
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h1>New Book</h1>
+      <div class="bg-white rounded p-3 shadow" style="margin-top: 20px;">
         <%= simple_form_for(@book) do |form| %>
           <div class="form-group">
             <%= form.input :name, placeholder: "Enter book name" %>

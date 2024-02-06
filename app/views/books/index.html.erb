@@ -7,7 +7,7 @@
 <div class="container text-center" >
   <div class="container-card d-flex justify-content-center align-items-center">
     <% if user_signed_in? %>
-      <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark rounded-corner transparent-bg full-width" %>
+      <%= link_to "Add a book to the shelf", new_book_path, class: "btn btn-dark rounded-corner transparent-bg full-width btn-lg m-4" %>
     <% end %>
   </div>
 </div>
@@ -16,7 +16,7 @@
     <li class="cards__item">
       <div class="card">
         <% if book.photo.attached? %>
-          <%= link_to cl_image_tag(book.photo.key, class: "card__image card__image--fence"), book_path(book) %>
+          <%= link_to cl_image_tag(book.photo.key, class: "card__image card__image--fence", style: "width: 100%; height: 100%; object-fit: contain"), book_path(book) %>
         <% else %>
           <%= link_to image_tag("Image_not_available.png", class: "card__image card__image--fence"), book_path(book) %>
         <% end %>
