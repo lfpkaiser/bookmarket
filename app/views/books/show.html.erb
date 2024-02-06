@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mx-auto">
       <div class="card card-category">
         <div class="card-body">
           <h1><%= @book.name %></h1>
@@ -23,7 +23,11 @@
                 <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
               </div>
                 <% if current_user %>
-                  <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+                  <% if @book.quantity.zero? %>
+                    <%= render 'shared/out_of_stock' %>
+                  <% else %>
+                    <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+                  <% end %>
                 <% else %>
                   <%= link_to "Login to purchase", new_user_session_path(return_to: book_path(@book)), class: "btn btn-primary" %>
                 <% end %>
