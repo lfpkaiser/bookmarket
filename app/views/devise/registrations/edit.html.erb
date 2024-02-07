@@ -47,11 +47,9 @@
           </div>
         <% end %>
 
-        <h3>Cancel my account</h3>
+        <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-        <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-dark", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-        <%= link_to "Back", :back %>
+        <%= link_to "Back", :back, class: "btn btn-dark" %>
       </div>
     </div>
   </div>

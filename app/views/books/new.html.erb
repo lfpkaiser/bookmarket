@@ -14,15 +14,16 @@
           <div class="form-group">
             <%= form.input :name, placeholder: "Enter book name" %>
             <%= form.input :author, placeholder: "Enter author name" %>
-            <%= form.input :genre, placeholder: "Enter book genre" %>
+            <%= form.input :genre, placeholder: "Enter book genre", collection: Book::GENRES %>
             <%= form.input :year, placeholder: "Enter publication year" %>
             <%= form.input :price, placeholder: "Enter book price" %>
             <%= form.input :descricao, placeholder: "Tell more about your book", label: "Description (Optional)" %>
             <%= form.input :quantity, placeholder: "Enter book quantity", error: 'not found' %>
             <%= form.input :photo, as: :file %>
-              <div class="actions">
-                <%= form.submit %>
-            </div>
+              <div class="actions ">
+                <%= form.submit class: "btn btn-dark" %>
+                <%= link_to "Cancel", books_path, class: "btn btn-dark", style: "float: right;" %>
+              </div>
           </div>
         <% end %>
       </div>

@@ -16,7 +16,18 @@
   width: 40px;
 }
 
+.navbar-nav .nav-link {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
 .navbar-nav .nav-link:hover {
   color: white;
-  background-color: black
+  background-color: black;
+}
+
+.form-inline .form-control {
+  width: 350px;
+  height: 38px;
+
 }
