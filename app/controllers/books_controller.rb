@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    if params[:query].present?
+      @books = Book.search_by_name_or_author(params[:query])
+    else
+      @books = Book.all
+    end
   end
 
   def show
@@ -27,10 +31,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to my_books_path
-  end
-
-  def search
-    @books = Book.where('name LIKE ?', "%#{params[:search]}%")
   end
 
   def my_books
