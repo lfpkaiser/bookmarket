@@ -4,30 +4,28 @@
       <h1 >Welcome to the <strong>BookMarket!</strong></h1>
     </div>
 </div>
-<div class="container text-center" >
-  <div class="container-card d-flex justify-content-center align-items-center">
-    <% if user_signed_in? %>
-      <%= link_to "ADD A BOOK TO THE SHELF", new_book_path, class: "btn-3d blue" %>
-    <% end %>
-  </div>
-</div>
+
 <ul class="cards">
   <% @books.order(id: :asc).each do |book| %>
-    <li class="cards__item">
-      <div class="card">
+    <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
+      <div class="card-product">
         <% if book.photo.attached? %>
           <%= link_to cl_image_tag(book.photo.key, class: "card__image card__image--fence", style: "object-fit: contain"), book_path(book) %>
         <% else %>
           <%= link_to image_tag("Image_not_available.png", class: "card__image card__image--fence"), book_path(book) %>
         <% end %>
-        <div class="card__content">
-          <div class="card__title"><%= book.name %></div>
-          <p class="card__text">Author: <%= book.author %></p>
-          <p class="card__text">Genre: <%= book.genre %></p>
-          <%= link_to "View more details", book_path(book), class: "btn btn-dark card__btn" %>
+        <div class="card-product-infos">
+          <div class=""><%= book.name %></div>
+          <p class="">Author: <%= book.author %></p>
+          <p class="">Genre: <%= book.genre %></p>
         </div>
       </div>
     </li>
   <% end %>
 </ul>
 </div>
+
+<!-- 10 -->
+    <div class="wrap d-flex justify-content-center">
+      <a href="<%= new_book_path %>" class="btn">ADD YOUR BOOK TO THE SHELF</a>
+    </div>
