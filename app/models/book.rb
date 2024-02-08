@@ -19,8 +19,8 @@ class Book < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_or_author,
-    against: [ :name, :author],
+    against: [:name, :author],
     using: {
-      tsearch: { prefix: true }
+      tsearch: { prefix: true, any_word: true }
     }
 end
