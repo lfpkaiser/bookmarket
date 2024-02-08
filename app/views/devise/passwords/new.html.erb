@@ -16,11 +16,11 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Send me reset password instructions" %>
+            <%= f.button :submit, "send me reset password instructions" %>
           </div>
         <% end %>
 
-        <%= render "devise/shared/links" %>
+        <%= button_to "back", root_path, method: :get, class: "btn btn-primary", style: "margin-top: 10px;" %>
 
       </div>
     </div>
