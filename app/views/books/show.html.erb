@@ -4,18 +4,18 @@
       <div class="card card-category">
         <div class="card-body text-center"> <!-- Add text-center class here -->
             <h1><strong><%= @book.name %></strong></h1>
-          <h3><%= @book.author %></h3>
-          <p>You can buy it for <%= @book.price %>$</p>
-          <% if @book.photo.attached? %>
-            <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
-          <% else %>
-            No photo available
-          <% end %>
-          <%= form_tag orders_path, method: :post do %>
-            <%= hidden_field_tag :book_id, @book.id %>
-            <% if current_user %>
-              <%= hidden_field_tag :user_id, current_user.id %>
+             <h3><%= @book.author %></h3>
+            <p>You can buy it for <%= @book.price %>$</p>
+            <% if @book.photo.attached? %>
+             <%= cl_image_tag @book.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+             No photo available
             <% end %>
+            <%= form_tag orders_path, method: :post do %>
+             <%= hidden_field_tag :book_id, @book.id %>
+             <% if current_user %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+             <% end %>
             <p>This book was ordered <%= pluralize(@book.orders.count, 'time')%>! <i class="fa-solid fa-truck-fast"></i> Available: <%= @book.quantity %></p>
               <% if current_user %>
                 <% if @book.quantity.zero? %>

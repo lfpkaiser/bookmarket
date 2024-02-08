@@ -1,6 +1,6 @@
 <%= simple_form_for [@book] do |form| %>
   <%= form.label :book %>
   <%= form.collection_select :book_id, Book.all, :id, :name %>
-  <%= form.input :genre, label: 'Genre' %>
+  <%= form.input :genre, label: 'Horror never ends' %>
   <%= form.submit %>
 <% end %>
