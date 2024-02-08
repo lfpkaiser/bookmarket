@@ -5,6 +5,10 @@
     </div>
 </div>
 
+  <div class="wrap d-flex justify-content-center">
+      <a href="<%= new_book_path %>" class="btn">ADD YOUR BOOK TO THE SHELF</a>
+    </div>
+
 <ul class="cards">
   <% @books.order(id: :asc).each do |book| %>
     <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
@@ -24,8 +28,3 @@
   <% end %>
 </ul>
 </div>
-
-<!-- 10 -->
-    <div class="wrap d-flex justify-content-center">
-      <a href="<%= new_book_path %>" class="btn">ADD YOUR BOOK TO THE SHELF</a>
-    </div>
