@@ -3,21 +3,20 @@
   <% if @books.empty? %>
     <p> You have no books in your shelf. </p>
   <% else %>
-    <div class="card">
+    <div class="row">
       <% @books.each do |book| %>
-        <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
-          <div class="card-product">
+        <div class="col-md-4" style="padding: 10px;">
+          <div class="card">
             <% if book.photo.attached? %>
               <%= link_to cl_image_tag(book.photo.key, class: "", height: 100, width: 300, crop: :fill, style: "margin-top: 40px;"), book_path(book) %>
             <% else %>
               <div class="">No photo available</div>
             <% end %>
-            <div class="card-product-infos" >
-              <h5 class="">
+            <div class="card-body">
+              <h5 class="card-title">
                 <strong><%= book.name %></strong>
               </h5>
-              <p class="">Author: <%= book.author %></p>
-
+              <p class="card-text">Author: <%= book.author %></p>
               <div class="button-container" style="display: flex; justify-content: center;">
                 <p class="button-item" style="margin-right: 5px;"><%= link_to "View more details", book_path(book), class: "btn btn-dark" %></p>
                 <p class="button-item" style="margin-right: 5px;"><%= link_to "Edit", edit_book_path(book), class: "btn btn-dark" %></p>
@@ -25,7 +24,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </div>
       <% end %>
     </div>
   <% end %>
