@@ -4,6 +4,13 @@
   flex-wrap: wrap;
 }
 
+.container-show{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100vh; // Set the height to 100vh to occupy the whole page
+}
+
 .container > div{
   flex: 1 1 100%;
   margin: 10px;
