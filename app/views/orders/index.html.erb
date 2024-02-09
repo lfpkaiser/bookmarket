@@ -17,12 +17,17 @@
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
+      <tr onclick="myFunction()">
         <td><%= order.book.name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= link_to "Order Details", order_path(order), class: "btn btn-dark" %></td>
       </tr>
+      <script>
+        function myFunction(order) {
+          window.location.href = "<%= order_path(order) %>";
+        }
+      </script>
     <% end %>
   </tbody>
 </table>
