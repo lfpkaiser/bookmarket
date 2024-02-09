@@ -12,7 +12,6 @@
       <th>Book Name</th>
       <th>Quantity</th>
       <th>Order Date</th>
-      <th>More</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +20,6 @@
         <td><%= order.book.name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-        <td><%= link_to "Order Details", order_path(order), class: "btn btn-dark" %></td>
       </tr>
       <script>
         function myFunction(order) {
