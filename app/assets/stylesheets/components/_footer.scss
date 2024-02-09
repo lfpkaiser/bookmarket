@@ -2,11 +2,13 @@ footer {
   background: black;
   color: white;
   padding: 30px;
+  margin-top: auto;
 
 }
 
 .inner{
-
+  position: sticky;
+  bottom: 0;
 }
 
 ul {
