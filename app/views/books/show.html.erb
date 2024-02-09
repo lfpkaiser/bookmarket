@@ -2,34 +2,59 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card card-category" style="border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; padding: 10px;">
-        <% if @book.photo.attached? %>
-          <div style="margin-right: 20px;">
-            <%= cl_image_tag @book.photo.key, style: "width: 200px; height: auto;", crop: :fill %>
-          </div>
-        <% else %>
-          No photo available
-        <% end %>
+
         <div class="card-body" style="padding: 20px;">
-          <div class="row">
-            <div class="col-md-6">
-              <ul style="list-style: none; padding-left: 0; text-align: left; margin: 0;">
-                <li style="margin-bottom: 10px;"><strong>Book Name:</strong> <%= @book.name %></li>
-                <li style="margin-bottom: 10px;"><strong>Author:</strong> <%= @book.author %></li>
-                <li style="margin-bottom: 10px;"><strong>Book Year:</strong> <%= @book.year %></li>
-                <li style="margin-bottom: 10px;"><strong>Stock Available:</strong> <%= @book.quantity %></li>
-              </ul>
+          <div class="row"> <!-- COLUNA 1 -->
+              <div class="col-md-4"> <!-- LINHA 1 -->
+                <% if @book.photo.attached? %>
+                  <div style="margin-right: 20px;">
+                    <%= cl_image_tag @book.photo.key, style: "width: 250px; height: auto;", crop: :fill %>
+                  </div>
+                <% else %>
+                  <%= image_tag("Image_not_available.png", style: "width: 250px; height: auto;", crop: :fill) %>
+                <% end %>
+              </div>
+              <div class="col-md-8"> <!-- LINHA 2 -->
+                <p><strong>Here's a description of the book:</strong></p>
+                <p class="information" style="font-style: italic; text-align: left; margin: 0;"><%= @book.descricao %></p>
+              </div>
             </div>
-            <div class="col-md-6">
-              <p><strong>Here's a brief description of the book:</strong></p>
-              <p class="information" style="font-style: italic; text-align: left; margin: 0;">Especially good for container gardening, the Angelonia will keep blooming all summer even if old flowers are removed. Once tall enough to cut, bring them inside and you'll notice a light scent that some say is reminiscent of apples.</p>
+          <div class="row"> <!-- COLUNA 2 -->
+          <div class="col-md-4"> <!-- LINHA 1 -->
+            <ul style="list-style: none; padding-left: 0; text-align: left; margin: 0; margin-top: 35px">
+                  <li style="margin-bottom: 10px;"><strong>Book Name:</strong> <%= @book.name %></li>
+                  <li style="margin-bottom: 10px;"><strong>Author:</strong> <%= @book.author %></li>
+                  <li style="margin-bottom: 10px;"><strong>Genre:</strong> <%= @book.genre %></li>
+                  <li style="margin-bottom: 10px;"><strong>Book Year:</strong> <%= @book.year %></li>
+                  <%# <li style="margin-bottom: 10px;"><strong>Stock Available:</strong> <%= @book.quantity %>
+              </ul>
+          </div>
+          <div class="col-md-8"> <!-- LINHA 2 -->
+            <div class="control" style="text-align: center; margin-top: 60px;">
+              <%= form_tag orders_path, method: :post do %>
+                <%= hidden_field_tag :book_id, @book.id %>
+                <% if current_user %>
+                  <%= hidden_field_tag :user_id, current_user.id %>
+                <% end %>
+                <p>This book was ordered <%= pluralize(@book.orders.count, 'time')%>! <i class="fa-solid fa-truck-fast"></i> Available: <%= @book.quantity %></p>
+                <% if current_user %>
+                  <% if @book.quantity.zero? %>
+                    <%= render 'shared/out_of_stock' %>
+                  <% else %>
+                    <div class="form-group">
+                      <%= label_tag :quantity, "Quantity:" %>
+                      <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
+                    </div>
+                    <div>
+                      <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to "Login to purchase", new_user_session_path(return_to: book_path(@book)), class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
-          <div class="control" style="text-align: center; margin-top: 20px;">
-            <button class="btn btn-dark" style="cursor: pointer;"> <!-- Restored button style -->
-              <span style="margin-right: 10px;">$49</span>
-              <span style="margin-right: 5px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-              <span style="font-weight: bold;">Buy Now</span>
-            </button>
           </div>
         </div>
       </div>
