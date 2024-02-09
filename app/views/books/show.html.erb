@@ -3,9 +3,12 @@
     <div class="col-md-12">
       <div class="card card-category" style="display: flex;">
         <div class="card-body text-center">
-          <img src="https://sc01.alicdn.com/kf/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3/200006212/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3.jpg" alt="Omar Dsoky" class="card-image" style="width: 200px; height: auto; position: absolute; top: 10px; left: 10px;">
-          <h1>Biru Putaran</h1>
-          <div class="columns">
+          <% if @book.photo.attached? %>
+            <%= cl_image_tag @book.photo.key, style: "width: 200px; height: auto; position: absolute; top: 10px; left: 10px;", crop: :fill %>
+          <% else %>
+            No photo available
+          <% end %>
+          <div>
             <ul>
               <li><strong>Sun Needs: </strong>Full Sun</li>
               <li><strong>Soil Needs: </strong>Damp</li>
