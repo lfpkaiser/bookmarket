@@ -16,3 +16,30 @@
   border-radius: 5px;
   background-color: #f5f5f5;
 }
+
+.container-show{
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .container > div {
+    flex: 1 1 100%;
+    margin: 10px;
+    width: 100%; // Add this line to make the columns occupy the whole container
+  }
+
+  .card-description {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+}
+
+.container > div{
+  flex: 1 1 100%;
+  margin: 10px;
+}

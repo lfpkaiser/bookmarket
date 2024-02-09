@@ -52,7 +52,7 @@ body {
 
 img {
   height: auto;
-  max-width: 100%;
+  // max-width: 100%;
   vertical-align: middle;
 }
 
@@ -81,12 +81,15 @@ img {
 .cards__item {
   display: flex;
   padding: 1rem;
+
   @media(min-width: 40rem) {
     width: 50%;
   }
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
+
+
 }
 
 .card {
@@ -111,9 +114,10 @@ img {
 }
 
 .card__image {
-  width: 800px; /* Set the desired width */
-  height: 600px; /* Set the desired height */
-  object-fit: contain;
+  width: 100%; /* Set the desired width */
+  height: 100%; /* Set the desired height */
+  object-fit: fill; /* Added property */
+
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -165,3 +169,4 @@ img {
     font-size: 32px;
     font-weight: bold;
   }
+
