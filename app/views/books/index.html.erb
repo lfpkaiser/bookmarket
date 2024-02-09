@@ -20,6 +20,7 @@
           <div class=""><%= book.name %></div>
           <p class="">Author: <%= book.author %></p>
           <p class="">Genre: <%= book.genre %></p>
+          <p class="">Price: R$ <%= book.price %></p>
         </div>
       <%= link_to "Details", book_path(book), class: "btn", style: "margin-right: 15px" %>
       </div>
