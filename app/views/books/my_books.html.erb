@@ -1,41 +1,41 @@
 <div class="text-center">
   <h1> My shelf </h1><i class="fa-solid fa-book-open" style="font-size: 2em;"></i>
 </div>
-
-        <% if @books.empty? %>
-        <p> You have no books in your shelf. </p>
-      <% else %>
-        <ul class="cards">
-          <% @books.order(id: :asc).each do |book| %>
-            <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
-              <div class="card-product">
-                <% if book.photo.attached? %>
-                  <%= cl_image_tag(book.photo.key, class: "card__image")%>
-                <% else %>
-                  <%= image_tag("Image_not_available.png", class: "card__image")%>
-                <% end %>
-                <div class="card-product-infos">
-                  <div class=""><%= book.name %></div>
-                  <p class="">Author: <%= book.author %></p>
-                  <p class="">Genre: <%= book.genre %></p>
-                </div>
-              <div class="button-container" style="display: flex; justify-content: center; flex-direction: column;">
-                <p class="button-item" style="margin-bottom: 1px; margin-right: 10px">
-                  <%= link_to "Details", book_path(book), class: "btn btn-sm", style: "width: 100px; height: 30px; text-align: center; margin: 0 auto;" %>
-                </p>
-                <p class="button-item" style="margin-bottom: 1px; margin-right: 10px">
-                  <%= link_to "Edit", edit_book_path(book), class: "btn btn-sm", style: "width: 100px; height: 30px; text-align: center;" %>
-                </p>
-                <p class="button-item" style="margin-bottom: 1px; margin-right: 10px ">
-                  <%= button_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this book?" }, class: "btn btn-danger btn-sm", style: "width: 100px; height: 30px; text-align: center;" %>
-                </p>
-                </div>
-            </li>
-          <% end %>
-        </ul>
+<div class="">
+  <% if @books.empty? %>
+    <p> You have no books in your shelf. </p>
+  <% else %>
+    <ul class="cards">
+      <% @books.order(id: :asc).each do |book| %>
+        <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
+          <div class="card-product">
+            <% if book.photo.attached? %>
+              <%= cl_image_tag(book.photo.key, class: "card__image")%>
+            <% else %>
+              <%= image_tag("Image_not_available.png", class: "card__image")%>
+            <% end %>
+            <div class="card-product-infos">
+              <div class=""><%= book.name %></div>
+              <p class="">Author: <%= book.author %></p>
+              <p class="">Genre: <%= book.genre %></p>
+            </div>
+            <div class="button-container" style="display: flex; justify-content: center; flex-direction: column;">
+              <p class="button-item" style="margin-bottom: 1px; margin-right: 10px">
+                <%= link_to "Details", book_path(book), class: "btn btn-sm", style: "width: 100px; height: 30px; text-align: center; margin: 0 auto;" %>
+              </p>
+              <p class="button-item" style="margin-bottom: 1px; margin-right: 10px">
+                <%= link_to "Edit", edit_book_path(book), class: "btn btn-sm", style: "width: 100px; height: 30px; text-align: center;" %>
+              </p>
+              <p class="button-item" style="margin-bottom: 1px; margin-right: 10px ">
+                <%= button_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this book?" }, class: "btn btn-danger btn-sm", style: "width: 100px; height: 30px; text-align: center;" %>
+              </p>
+            </div>
+          </div>
+        </li>
       <% end %>
-
+    </ul>
+  <% end %>
 </div>
-    <div class="wrap d-flex justify-content-center">
-      <a href="<%= new_book_path %>" class="btn">ADD YOUR BOOK TO THE SHELF</a>
-    </div>
+<div class="wrap d-flex justify-content-center">
+  <a href="<%= new_book_path %>" class="btn">ADD YOUR BOOK TO THE SHELF</a>
+</div>
