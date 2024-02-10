@@ -9,22 +9,23 @@
 <ul class="cards">
   <% @books.order(id: :asc).each do |book| %>
     <li class="cards__item col-md-4"> <!-- Added col-md-4 class -->
-
-      <div class="card-product">
-        <% if book.photo.attached? %>
-          <%= cl_image_tag(book.photo.key, class: "card__image")%>
-        <% else %>
-          <%= image_tag("Image_not_available.png", class: "card__image")%>
-        <% end %>
-        <div class="card-product-infos">
-          <div class=""><%= book.name %></div>
-          <p class="">Author: <%= book.author %></p>
-          <p class="">Genre: <%= book.genre %></p>
-          <p class="">Price: R$ <%= book.price %></p>
+        <div onclick="window.location.href='<%= book_path(book) %>'" class="card-product" style="cursor: pointer;">
+          <% if book.photo.attached? %>
+            <%= cl_image_tag(book.photo.key, class: "card__image")%>
+          <% else %>
+            <%= image_tag("Image_not_available.png", class: "card__image")%>
+          <% end %>
+          <div class="card-product-infos">
+            <div class=""><%= book.name %></div>
+            <p class="">Author: <%= book.author %></p>
+            <p class="">Genre: <%= book.genre %></p>
+            <p class="">Price: R$ <%= book.price %></p>
+          </div>
+        <%# <%= link_to "Details", book_path(book), class: "btn", style: "margin-right: 15px" %>
         </div>
-      <%= link_to "Details", book_path(book), class: "btn", style: "margin-right: 15px" %>
-      </div>
-    </li>
+      </li>
   <% end %>
 </ul>
-</div>
+</div> <!-- Added closing div tag -->
+
+

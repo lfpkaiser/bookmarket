@@ -89,7 +89,7 @@ books_attributes = [
     year: 2010,
     price: 89,
     quantity: 3,
-    descricao: 'The Geometry of Pasta pairs over 100 authentic recipes from acclaimed chef Jacob Kenedy with award-winning designer Caz Hildebrand’s stunning black-and-white designs to reveal the science, history, and philosophy behind spectacular pasta dishes from throughout Italian history.',
+    descricao: 'The Geometry of Pasta pairs over 100 authentic recipes from acclaimed chef Jacob Kenedy with award-winning designer Caz Hildebrands stunning black-and-white designs to reveal the science, history, and philosophy behind spectacular pasta dishes from throughout Italian history.',
     user_id: User.last.id # Connect the book to the last user
   },
   {

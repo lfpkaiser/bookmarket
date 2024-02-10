@@ -15,8 +15,13 @@
                 <% end %>
               </div>
               <div class="col-md-8"> <!-- LINHA 2 -->
-                <p><strong>Here's a description of the book:</strong></p>
-                <p class="information" style="font-style: italic; text-align: left; margin: 0;"><%= @book.descricao %></p>
+                <p><strong>Book Description</strong></p>
+
+                <% if @book.descricao.present? %>
+                  <p class="information" style="font-style: italic; text-align: left; margin: 0;"><%= @book.descricao %></p>
+                <% else %>
+                  <p class="information" style="font-style: italic; text-align: left; margin: 0;">Sorry, no description for this book</p>
+                <% end %>
               </div>
             </div>
           <div class="row"> <!-- COLUNA 2 -->
@@ -26,6 +31,7 @@
                   <li style="margin-bottom: 10px;"><strong>Author:</strong> <%= @book.author %></li>
                   <li style="margin-bottom: 10px;"><strong>Genre:</strong> <%= @book.genre %></li>
                   <li style="margin-bottom: 10px;"><strong>Book Year:</strong> <%= @book.year %></li>
+                  <li style="margin-bottom: 10px;"><strong>Individual Price:</strong> $<%= @book.price %></li>
                   <%# <li style="margin-bottom: 10px;"><strong>Stock Available:</strong> <%= @book.quantity %>
               </ul>
           </div>
@@ -41,12 +47,16 @@
                   <% if @book.quantity.zero? %>
                     <%= render 'shared/out_of_stock' %>
                   <% else %>
-                    <div class="form-group">
-                      <%= label_tag :quantity, "Quantity:" %>
+                    <div class="form-group" style="margin-top: 10px; margin-bottom: 10px;">
+                      <%= label_tag :quantity, "Select quantity:" %>
                       <%= select_tag :quantity, options_for_select((1..@book.quantity).to_a), class: "form-control" %>
                     </div>
                     <div>
-                      <%= button_to "Purchase!", orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+                      <%= button_to orders_path, method: :post, params: { book_id: @book.id, user_id: current_user.id }, class: "btn btn-primary", data: { confirm: "Are you sure?" } do %>
+                        <span style="margin-right: 10px;">$<%= @book.price %></span>
+                        <span style="margin-right: 5px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                        <span style="font-weight: bold;">Buy Now</span>
+                      <% end %>
                     </div>
                   <% end %>
                 <% else %>
