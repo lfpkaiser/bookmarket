@@ -95,7 +95,7 @@ books_attributes = [
   {
     name: 'Meu pé de laranja lima',
     author: 'José Mauro de Vasconcelos',
-    genre: 'Drama',
+    genre: 'Non-fiction',
     year: 1968,
     price: 29,
     quantity: 10,
