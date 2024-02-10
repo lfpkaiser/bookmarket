@@ -101,6 +101,44 @@ books_attributes = [
     quantity: 10,
     user_id: User.first.id, # Connect the book to the first user
     descricao: 'Meu Pé de Laranja Lima is a Brazilian novel written by José Mauro de Vasconcelos in 1968. It tells the story of Zezé, a young boy. The novel has been adapted into a film and a TV series.'
+  },
+  {
+    name: 'Código Limpo',
+    author: 'Robert C. Martin',
+    genre: 'Children',
+    year: 2009,
+    price: 120,
+    quantity: 12,
+    descricao: 'Mesmo um código ruim pode funcionar. Mas se ele não for limpo, pode acabar com uma empresa de desenvolvimento. Perdem-se a cada ano horas incontáveis e recursos importantes devido a um código mal escrito. Mas não precisa ser assim. O renomado especialista em software, Robert C. Martin, apresenta um paradigma revolucionário com “Código limpo: Habilidades Práticas do Agile Software”.',
+    user_id: User.second.id # Connect the book to the second user
+  },
+  {
+    name: 'Como Se livrar das drogas',
+    author: 'Luís "Gerson" Soares',
+    genre: 'Self-help',
+    year: 2019,
+    price: 5,
+    quantity: 11,
+    descricao: '"Por que é tão importante para você investir neste livro sobre tratamento para dependentes de drogas para viciado em drogas agora ..."O que é realmente importante agora não é a pequena quantia que você investirá neste livro de tratamento para vicio em drogas para homens e mulheres, mas quanto você perderá se não investir!Entenda que você pode realmente estar perdendo oportunidade de obter um tratamento de vicio em drogas e se livrar do seu vício em drogas com sucesso.Não deixe nada ficar entre você e seu sucesso com a sua vida e descubra os TOP segredos de como dependentes de drogas podem se livrar da dependência de drogas e deiaxar de ser viciado em Drogas de uma vez por todas!Veja bem, quanto tempo as pessoas devem aprender com os maus momentos antes de investir em si mesmas e em seu sucesso na vida?Pense em quanto sua vida pode mudar se você realmente aplicar as TOP estratégias deste e-book sobre drogas. Você pode ter sucesso e ser feliz ao descobir os TOP segredos de como me livrar das drogas de uma maneira incrível!Não consigo imaginar alguém tirando vantagem disso, é absurdo e pode causar muitos problemas se você não tiver todas as informações necessárias contidas neste livro que ensina como se livrar da dependência de drogas!Felizmente, você é uma pessoa inteligente ... caso contrário, não estaria procurando uma maneira de obter as estratégias contidas neste livro para viciados em drogas, sejam eles, mulheres ou homens se livrarem da dependência de drogas ilícitas. E para mostrar minha sinceridade, mostrarei algo que definitivamente adoçará nosso acordo ...',
+    user_id: User.last.id # Connect the book to the last user
+  },
+  {
+    name: 'KELLY KEY E O MESTRE TUCA',
+    author: 'Kelly Key',
+    genre: 'Philosophy',
+    year: 2023,
+    price: 54,
+    quantity: 150,
+    descricao: 'Kelly Key e o Mestre Tuca
+    Na cozinha vão criar
+    Receitinhas saborosas
+    Todos vão querer provar!
+
+    Um tempero especial
+    Preparado com sabor
+    Traga toda a sua família
+    E partilhe com amor!',
+    user_id: User.first.id # Connect the book to the first user
   }
 ]
 
@@ -118,7 +156,7 @@ book = Book.find_by(name: 'Chronicles of Narnia')
 book.photo.attach(io: URI.open('https://images.unsplash.com/photo-1629992101753-56d196c8aabb?q=80&w=1980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), filename: 'book2.jpg')
 
 book = Book.find_by(name: 'Company of no One')
-book.photo.attach(io: URI.open('https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), filename: 'book3.jpg')
+book.photo.attach(io: URI.open('https://m.media-amazon.com/images/W/MEDIAX_849526-T3/images/I/71CqOvbF+2L._SL1500_.jpg'), filename: 'book3.jpg')
 
 book = Book.find_by(name: 'Your Soul is a River')
 book.photo.attach(io: URI.open('https://images.unsplash.com/photo-1511873072108-90dc8b47f9fb?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), filename: 'book4.jpg')
@@ -128,5 +166,16 @@ book.photo.attach(io: URI.open('https://images.unsplash.com/photo-1541528772347-
 
 book = Book.find_by(name: 'Meu pé de laranja lima')
 book.photo.attach(io: URI.open('https://m.media-amazon.com/images/I/6121ro6x1-L._SY466_.jpg'), filename: 'book6.jpg')
+
+book = Book.find_by(name: 'Código Limpo')
+book.photo.attach(io: URI.open('https://m.media-amazon.com/images/W/MEDIAX_849526-T3/images/I/71dH97FwGbL._SL1500_.jpg'), filename: 'book7.jpg')
+
+book = Book.find_by(name: 'Como Se livrar das drogas')
+book.photo.attach(io: URI.open('https://m.media-amazon.com/images/I/61rr20W6bWL._SL1360_.jpg'), filename: 'book8.jpg')
+
+book = Book.find_by(name: 'KELLY KEY E O MESTRE TUCA')
+book.photo.attach(io: URI.open('https://img.travessa.com.br/livro/GR/cd/cd8003a3-cdba-45cb-b038-ab890a137f9b.jpg'), filename: 'book9.jpg')
+
+
 
 puts 'Book seed data created successfully.'
