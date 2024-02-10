@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   GENRES = ['Fantasy', 'Sci-Fi', 'Mystery', 'Biography', 'History', 'Romance',
             'Horror', 'Thriller', 'Non-fiction', 'Fiction', 'Children',
-            'Self-help', 'Cooking', 'Art', 'Science', 'Poetry', 'Religion',
+            'Self-help', 'Cooking', 'Drama', 'Art', 'Science', 'Poetry', 'Religion',
             'Philosophy', 'Travel', 'Health', 'Fitness', 'Sports', 'Comics', 'Non-binary',
             'Not applicable'].map(&:downcase)
 
