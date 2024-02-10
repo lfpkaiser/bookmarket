@@ -1,9 +1,10 @@
 body {
   background-color: #ebdcd7;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   grid-template-rows: 1fr auto;
+
 }
 
 tr {
