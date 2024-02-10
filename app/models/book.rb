@@ -3,7 +3,7 @@ class Book < ApplicationRecord
             'Horror', 'Thriller', 'Non-fiction', 'Fiction', 'Children',
             'Self-help', 'Cooking', 'Drama', 'Art', 'Science', 'Poetry', 'Religion',
             'Philosophy', 'Travel', 'Health', 'Fitness', 'Sports', 'Comics', 'Non-binary',
-            'Not applicable'].map(&:downcase)
+            'Not applicable']
 
   belongs_to :user
   has_many :orders, dependent: :destroy
